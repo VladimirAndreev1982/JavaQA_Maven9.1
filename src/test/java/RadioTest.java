@@ -94,9 +94,9 @@ public class RadioTest {
     @Test // Проверка 2 увеличения уровня звука
     public void IncreaseVolume2() {
         Radio radio = new Radio();
-        radio.setCurrentVolume(1);
+        radio.setCurrentVolume(99);
         radio.increaseVolume();
-        int expected = 2;
+        int expected = 100;
         int actual = radio.getCurrentVolume();
         assertEquals(expected, actual);
     }
@@ -104,9 +104,9 @@ public class RadioTest {
     @Test // Проверка 3 увеличения уровня звука
     public void IncreaseVolume3() {
         Radio radio = new Radio();
-        radio.setCurrentVolume(10);
+        radio.setCurrentVolume(100);
         radio.increaseVolume();
-        int expected = 10;
+        int expected = 100;
         int actual = radio.getCurrentVolume();
         assertEquals(expected, actual);
     }
@@ -124,9 +124,9 @@ public class RadioTest {
     @Test // Проверка 5 увеличения НЕ валидного уровня звука
     public void IncreaseVolumeNoValid2() {
         Radio radio = new Radio();
-        radio.setCurrentVolume(11);
+        radio.setCurrentVolume(200);
         radio.increaseVolume();
-        int expected = 1;
+        int expected = 1; // При НЕ валидном наборе осталяет уровень звука какой был до этого
         int actual = radio.getCurrentVolume();
         assertEquals(expected, actual);
     }
@@ -159,5 +159,20 @@ public class RadioTest {
         int expected = 0;
         int actual = radio.getCurrentVolume();
         assertEquals(expected, actual);
+    }
+
+
+    @Test
+    public void quantityStation1() { // Проверка ввода валидного кол-ва станций
+        Radio radio = new Radio();
+        radio.setQuantityStation(101);
+        assertEquals(101, radio.getQuantityStation());
+    }
+
+    @Test
+    public void quantityStation2() { // Проверка ввода НЕвалидного кол-ва станций
+        Radio radio = new Radio();
+        radio.setQuantityStation(-10);
+        assertEquals(10, radio.getQuantityStation());
     }
 }

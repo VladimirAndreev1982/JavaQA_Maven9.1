@@ -1,42 +1,58 @@
 public class Radio {
 
     //---Номер радиостанции----------------------------------------------------------
-    private int currentStation; // закрытая переменная номер радиостанции
+    private int currentStation; // номер текущей радиостанции
+    private int quantityStation = 10; // количество радиостанций = 10
+    private int maxNumberStation = quantityStation - 1; // максимальный номер радиостанции = 9
+    private int minNumberStation = 0; // минимальный номер радиостанции = 0
 
     public int getCurrentStation() { // Текующий номер радиостанции
         return currentStation;
     }
+    public int getQuantityStation() { // Текующий номер радиостанции
+        return quantityStation;
+    }
+
 
     public void setCurrentStation(int currentStation) { // Вводимый номер станция
-        if (currentStation < 0) {  // Если вводимый номер станции меньше 0 то уходим
-            System.out.println("Введите номер станции от 0 до 9");
+        if (currentStation < minNumberStation) {  // Если вводимый номер станции меньше 0 то уходим
+            System.out.println("Введите номер станции от " + minNumberStation +  " до " + maxNumberStation);
             return;
         }
-        if (currentStation > 9) {  // Если вводимый номер станции больше 9 то уходим
-            System.out.println("Введите номер станции от 0 до 9");
+        if (currentStation > maxNumberStation) {  // Если вводимый номер станции больше 9 то уходим
+            System.out.println("Введите номер станции от " + minNumberStation +  " до " + maxNumberStation);
             return;
         }
         this.currentStation = currentStation;
     }
 
+    public void setQuantityStation(int quantityStation) { // Вводимое кол-во станций
+        if (quantityStation < 0) {  // Если вводимое кол-во станций меньше 0 то уходим
+            System.out.println("Введите кол-во станций больше 0");
+            return;
+        }
+        this.quantityStation = quantityStation;
+    }
     public void nextStation() { // Следующий номер радиостанци
-        if (currentStation < 9) {
+        if (currentStation < maxNumberStation) {
             currentStation = currentStation + 1; // currentStation++
         } else {
-            currentStation = 0;
+            currentStation = minNumberStation;
         }
     }
 
     public void prevStation() { // Предыдующий номер радиостанции
-        if (currentStation > 0) {
+        if (currentStation > minNumberStation) {
             currentStation = currentStation - 1; // currentStation--
         } else {
-            currentStation = 9;
+            currentStation = maxNumberStation;
         }
     }
 
     //---Уровень звука----------------------------------------------------------
-    private int currentVolume; // закрытая переменная уровень звука
+    private int currentVolume; // текуший уровень звука
+    private int minVolume = 0; // минимальный уровень звука = 0
+    private int maxVolume = 100; // максимальный уровень звука = 100
 
     public int getCurrentVolume() { // Текущий уровень звука
         return currentVolume;
@@ -44,30 +60,30 @@ public class Radio {
 
     // В задаче нет требования про ручной ввод номера звука !!!
     public void setCurrentVolume(int currentVolume) { // Вводимый уровень звука
-        if (currentVolume < 0) {  // Если вводимый уровень звука меньше 0 то уходим
-            System.out.println("Введите уровень звука от 0 до 10");
+        if (currentVolume < minVolume) {  // Если вводимый уровень звука меньше 0 то уходим
+            System.out.println("Введите уровень звука от " + minVolume + " до " + maxVolume);
             return;
         }
-        if (currentVolume > 10) {  // Если вводимый уровень звука больше 10 то уходим
-            System.out.println("Введите уровень звука от 0 до 10");
+        if (currentVolume > maxVolume) {  // Если вводимый уровень звука больше 10 то уходим
+            System.out.println("Введите уровень звука от " + minVolume + " до " + maxVolume);
             return;
         }
         this.currentVolume = currentVolume;
     }
 
     public void increaseVolume() { // Увеличение уровня звука
-        if (currentVolume < 10) {
+        if (currentVolume < maxVolume) {
             currentVolume = currentVolume + 1; // currentVolume++
         } else {
-            currentVolume = 10;
+            currentVolume = maxVolume;
         }
     }
 
     public void decreaseVolume() { // Уменьшение уровня звука
-        if (currentVolume > 0) {
+        if (currentVolume > minVolume) {
             currentVolume = currentVolume - 1; // currentVolume--
         } else {
-            currentVolume = 0;
+            currentVolume = minVolume;
         }
     }
 }
