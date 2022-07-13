@@ -1,26 +1,31 @@
 public class Radio {
-
-    //---Номер радиостанции----------------------------------------------------------
+    //---Номер радиостанции поля----------------------------------------------------------
     private int currentStation; // номер текущей радиостанции
     private int quantityStation = 10; // количество радиостанций = 10
     private int maxNumberStation = quantityStation - 1; // максимальный номер радиостанции = 9
     private int minNumberStation = 0; // минимальный номер радиостанции = 0
 
-    public int getCurrentStation() { // Текующий номер радиостанции
+    //---Уровень звука поля----------------------------------------------------------
+    private int currentVolume; // текущий уровень звука
+    private int minVolume = 0; // минимальный уровень звука = 0
+    private int maxVolume = 100; // максимальный уровень звука = 100
+
+    //---Номер радиостанции методы----------------------------------------------------------
+    public int getCurrentStation() { // Текущий номер радиостанции
         return currentStation;
     }
-    public int getQuantityStation() { // Текующий номер радиостанции
+
+    public int getQuantityStation() { // Текущий номер радиостанции
         return quantityStation;
     }
 
-
     public void setCurrentStation(int currentStation) { // Вводимый номер станция
         if (currentStation < minNumberStation) {  // Если вводимый номер станции меньше 0 то уходим
-            System.out.println("Введите номер станции от " + minNumberStation +  " до " + maxNumberStation);
+            System.out.println("Введите номер станции от " + minNumberStation + " до " + maxNumberStation);
             return;
         }
         if (currentStation > maxNumberStation) {  // Если вводимый номер станции больше 9 то уходим
-            System.out.println("Введите номер станции от " + minNumberStation +  " до " + maxNumberStation);
+            System.out.println("Введите номер станции от " + minNumberStation + " до " + maxNumberStation);
             return;
         }
         this.currentStation = currentStation;
@@ -33,6 +38,7 @@ public class Radio {
         }
         this.quantityStation = quantityStation;
     }
+
     public void nextStation() { // Следующий номер радиостанци
         if (currentStation < maxNumberStation) {
             currentStation = currentStation + 1; // currentStation++
@@ -49,11 +55,7 @@ public class Radio {
         }
     }
 
-    //---Уровень звука----------------------------------------------------------
-    private int currentVolume; // текуший уровень звука
-    private int minVolume = 0; // минимальный уровень звука = 0
-    private int maxVolume = 100; // максимальный уровень звука = 100
-
+    //---Уровень звука методы----------------------------------------------------------
     public int getCurrentVolume() { // Текущий уровень звука
         return currentVolume;
     }

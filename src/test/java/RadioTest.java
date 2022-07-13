@@ -131,27 +131,27 @@ public class RadioTest {
         assertEquals(expected, actual);
     }
 
-    @Test // Проверка 1 уменьшения уровня звука
+    @Test // Проверка 1 уменьшения валидного уровня звука
     public void decreaseVolume1() {
         Radio radio = new Radio();
-        radio.setCurrentVolume(10);
+        radio.setCurrentVolume(100);
         radio.decreaseVolume();
-        int expected = 9;
+        int expected = 99;
         int actual = radio.getCurrentVolume();
         assertEquals(expected, actual);
     }
 
-    @Test // Проверка 2 уменьшения уровня звука
+    @Test // Проверка 2 уменьшения валидного уровня звука
     public void decreaseVolume2() {
         Radio radio = new Radio();
-        radio.setCurrentVolume(9);
+        radio.setCurrentVolume(1);
         radio.decreaseVolume();
-        int expected = 8;
+        int expected = 0;
         int actual = radio.getCurrentVolume();
         assertEquals(expected, actual);
     }
 
-    @Test // Проверка 3 уменьшения уровня звука
+    @Test // Проверка 3 уменьшения валидного уровня звука
     public void decreaseVolume3() {
         Radio radio = new Radio();
         radio.setCurrentVolume(0);
@@ -161,6 +161,15 @@ public class RadioTest {
         assertEquals(expected, actual);
     }
 
+    @Test // Проверка 1 уменьшения НЕвалидного уровня звука
+    public void decreaseVolume4() {
+        Radio radio = new Radio();
+        radio.setCurrentVolume(200);
+        radio.decreaseVolume();
+        int expected = 0;
+        int actual = radio.getCurrentVolume();
+        assertEquals(expected, actual);
+    }
 
     @Test
     public void quantityStation1() { // Проверка ввода валидного кол-ва станций
