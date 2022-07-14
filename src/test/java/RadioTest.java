@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.Assertions;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
@@ -184,4 +185,12 @@ public class RadioTest {
         radio.setQuantityStation(-10);
         assertEquals(10, radio.getQuantityStation());
     }
+    @Test
+    public void construktor() { // Проверка работы конструктора Radio
+        Radio radio = new Radio(20);
+        Assertions.assertEquals(20, radio.getQuantityStation());
+        Assertions.assertEquals(0, radio.getMinNumberStation());
+        Assertions.assertEquals(19, radio.getMaxNumberStation());
+    }
+
 }
